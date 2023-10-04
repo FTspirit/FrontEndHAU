@@ -25,7 +25,7 @@ const Login = () => {
   const [form] = Form.useForm();
 
   useEffect(() => {
-    setPageTitle('Admin Login');
+    setPageTitle('Đăng nhập');
   }, []);
 
   useEffect(() => {
@@ -35,14 +35,17 @@ const Login = () => {
   }, [admin]);
 
   const onSubmit = (values: FormValues) => {
+    console.log(values);
     setLoading(true);
 
     defaultHttp
       .post(apiRoutes.login, {
-        email: values.email,
+        username: values.email,
         password: values.password,
+        role: 0,
       })
       .then((response) => {
+        console.log(response.data)
         const admin: Admin = {
           token: response.data.token,
         };
@@ -57,7 +60,7 @@ const Login = () => {
   return (
     <Fragment>
       <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-left text-opacity-30 tracking-wide">
-        Admin Login
+        Đăng nhập
       </h1>
       <Form
         className="space-y-4 md:space-y-6"
@@ -69,8 +72,8 @@ const Login = () => {
         initialValues={
           import.meta.env.VITE_DEMO_MODE === 'true'
             ? {
-                email: 'eve.holt@reqres.in',
-                password: 'password',
+                email: '2055010203',
+                password: '205501020329112002',
               }
             : {}
         }
@@ -79,21 +82,13 @@ const Login = () => {
           <Form.Item
             name="email"
             label={
-              <p className="block text-sm font-medium text-gray-900">Email</p>
+              <p className="block text-sm font-medium text-gray-900">
+                Email dang nhap
+              </p>
             }
-            rules={[
-              {
-                required: true,
-                message: 'Please enter your email',
-              },
-              {
-                type: 'email',
-                message: 'Invalid email address',
-              },
-            ]}
           >
             <Input
-              placeholder="name@example.com"
+              placeholder="2055010203"
               className="bg-gray-50 text-gray-900 sm:text-sm py-1.5"
             />
           </Form.Item>
@@ -103,7 +98,7 @@ const Login = () => {
             name="password"
             label={
               <p className="block text-sm font-medium text-gray-900">
-                Password
+                Mat khau
               </p>
             }
             rules={[
