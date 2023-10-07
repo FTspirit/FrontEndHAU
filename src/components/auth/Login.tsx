@@ -83,7 +83,7 @@ const Login = () => {
             name="email"
             label={
               <p className="block text-sm font-medium text-gray-900">
-                Email dang nhap
+                Email đăng nhập
               </p>
             }
           >
@@ -98,7 +98,7 @@ const Login = () => {
             name="password"
             label={
               <p className="block text-sm font-medium text-gray-900">
-                Mat khau
+                Mật khẩu
               </p>
             }
             rules={[
